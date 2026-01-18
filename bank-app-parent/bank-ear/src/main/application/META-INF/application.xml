@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="https://jakarta.ee/xml/ns/jakartaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                                 https://jakarta.ee/xml/ns/jakartaee/application_9.xsd"
+             version="9">
+    <display-name>Bank Application</display-name>
+    <module>
+        <web>
+            <web-uri>bank-api-0.0.1-SNAPSHOT.war</web-uri>
+            <context-root>/bank-api</context-root>
+        </web>
+    </module>
+    <module>
+        <ejb>bank-service-0.0.1-SNAPSHOT.jar</ejb>
+    </module>
+    <module>
+        <ejb>bank-persistence-0.0.1-SNAPSHOT.jar</ejb>
+    </module>
+    <library-directory>lib</library-directory>
+</application>

@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.bank</groupId>
+        <artifactId>bank-app-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>bank-ear</artifactId>
+    <packaging>ear</packaging>
+
+    <dependencies>
+        <!-- WAR -->
+        <dependency>
+            <groupId>com.bank</groupId>
+            <artifactId>bank-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+
+        <!-- JARs -->
+        <dependency>
+            <groupId>com.bank</groupId>
+            <artifactId>bank-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bank</groupId>
+            <artifactId>bank-persistence</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bank</groupId>
+            <artifactId>bank-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- Disable Spring Boot repackage for EAR -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- EAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <generateApplicationXml>true</generateApplicationXml>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <webModule>
+                            <groupId>com.bank</groupId>
+                            <artifactId>bank-api</artifactId>
+                            <contextRoot>/bank-api</contextRoot>
+                        </webModule>
+
+                        <jarModule>
+                            <groupId>com.bank</groupId>
+                            <artifactId>bank-service</artifactId>
+                        </jarModule>
+
+                        <jarModule>
+                            <groupId>com.bank</groupId>
+                            <artifactId>bank-persistence</artifactId>
+                        </jarModule>
+
+                        <jarModule>
+                            <groupId>com.bank</groupId>
+                            <artifactId>bank-common</artifactId>
+                        </jarModule>
+                    </modules>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

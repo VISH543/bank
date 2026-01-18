@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="https://jakarta.ee/xml/ns/jakartaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                                 https://jakarta.ee/xml/ns/jakartaee/application_9.xsd"
+             version="9">
+    <display-name>Consumer Service Application</display-name>
+    <module>
+        <web>
+            <web-uri>consumer-web-0.0.1-SNAPSHOT.war</web-uri>
+            <context-root>/consumer</context-root>
+        </web>
+    </module>
+    <library-directory>lib</library-directory>
+</application>
